@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
                 <GraduationCap className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">TechVerse University</h3>
+                <h3 className="text-xl font-bold">CEC University</h3>
                 <p className="text-sm text-gray-400">Department Events Portal</p>
               </div>
             </div>
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2025 TechVerse University. All rights reserved.
+            © 2025 InfoTech. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Privacy Policy</a>

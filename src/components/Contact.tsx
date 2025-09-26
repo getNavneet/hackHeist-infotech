@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Email</h4>
-                    <p className="text-gray-600">events@techverse.edu</p>
+                    <p className="text-gray-600">events@cgc.edu.in</p>
                   </div>
                 </div>
 
@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Address</h4>
-                    <p className="text-gray-600">TechVerse University, Main Campus<br />Student Activities Center, Room 205</p>
+                    <p className="text-gray-600">CEC, Main Campus<br />block 3 Room 605</p>
                   </div>
                 </div>
 
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Office Hours</h4>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                    <p className="text-gray-600">Monday - Friday: 9:15 AM - 4:30 PM</p>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GraduationCap, Menu, X } from 'lucide-react';
+import { CircuitBoard, Menu, X } from 'lucide-react'; // Changed icon
 
 interface HeaderProps {
   onLoginClick: () => void;
@@ -21,17 +21,17 @@ const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <header className="bg-black border-b border-gray-800 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-xl">
-              <GraduationCap className="h-6 w-6 text-white" />
+            <div className="bg-orange-600 p-2 rounded-lg">
+              <CircuitBoard className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">CEC</h1>
-              <p className="text-xs text-gray-600 hidden sm:block">Department Events Portal</p>
+              <h1 className="text-xl font-bold text-white">CEC</h1>
+              <p className="text-xs text-gray-400 hidden sm:block">Events Portal</p>
             </div>
           </div>
 
@@ -42,14 +42,14 @@ const Header: React.FC<HeaderProps> = ({
                 {isAdmin && (
                   <button
                     onClick={onAdminDashboard}
-                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 text-sm"
+                    className="bg-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition"
                   >
                     Admin Dashboard
                   </button>
                 )}
                 <button
                   onClick={onLogout}
-                  className="text-gray-700 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-200 text-sm font-medium"
+                  className="text-gray-300 hover:text-orange-500 transition"
                 >
                   Logout
                 </button>
@@ -58,13 +58,13 @@ const Header: React.FC<HeaderProps> = ({
               <>
                 <button
                   onClick={onLoginClick}
-                  className="text-gray-700 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-200 text-sm font-medium"
+                  className="text-gray-300 hover:text-orange-500 transition px-4 py-2"
                 >
                   Login
                 </button>
                 <button
                   onClick={onSignupClick}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-sm"
+                  className="bg-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition"
                 >
                   Sign Up
                 </button>
@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-700 hover:text-gray-900 focus:outline-none"
+              className="text-gray-300 hover:text-orange-500 focus:outline-none"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -86,8 +86,8 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-4 pb-4">
-          <div className="flex flex-col space-y-2">
+        <div className="md:hidden px-4 pb-4 bg-black">
+          <div className="flex flex-col space-y-2 mt-2">
             {isLoggedIn ? (
               <>
                 {isAdmin && (
@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({
                       onAdminDashboard();
                       setMobileMenuOpen(false);
                     }}
-                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg font-medium text-sm"
+                    className="bg-orange-600 text-white px-4 py-2 rounded-lg font-medium w-full"
                   >
                     Admin Dashboard
                   </button>
@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({
                     onLogout();
                     setMobileMenuOpen(false);
                   }}
-                  className="text-gray-700 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-200 text-sm font-medium"
+                  className="text-gray-300 hover:text-orange-500 px-4 py-2 rounded-lg hover:bg-gray-900 transition"
                 >
                   Logout
                 </button>
@@ -118,7 +118,7 @@ const Header: React.FC<HeaderProps> = ({
                     onLoginClick();
                     setMobileMenuOpen(false);
                   }}
-                  className="text-gray-700 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all duration-200 text-sm font-medium"
+                  className="text-gray-300 hover:text-orange-500 px-4 py-2 rounded-lg hover:bg-gray-900 transition"
                 >
                   Login
                 </button>
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
                     onSignupClick();
                     setMobileMenuOpen(false);
                   }}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-sm"
+                  className="bg-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition"
                 >
                   Sign Up
                 </button>

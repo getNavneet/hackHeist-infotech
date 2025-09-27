@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaRobot } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
+// Import the close icon
+import { IoMdSend, IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ChatBot = () => {
@@ -11,7 +12,6 @@ const ChatBot = () => {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
-  // Automatically scroll to the bottom of the messages list
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -22,14 +22,12 @@ const ChatBot = () => {
 
   const handleToggle = () => setIsOpen(!isOpen);
 
-  // --- Corrected handleSend function to prevent duplicate messages ---
   const handleSend = () => {
     if (!input.trim()) return;
 
     const newUserMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, newUserMessage]);
 
-    // Simulate bot response
     setTimeout(() => {
       const botResponseText = getBotResponse(input);
       const newBotMessage = { sender: "bot", text: botResponseText };
@@ -45,7 +43,6 @@ const ChatBot = () => {
     }
   };
 
-  // --- Updated responses to be more relevant to an event platform ---
   const getBotResponse = (query: string) => {
     const lowerQuery = query.toLowerCase();
     if (lowerQuery.includes("register")) {
@@ -72,13 +69,11 @@ const ChatBot = () => {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="w-80 h-[28rem] bg-black text-white p-4 rounded-2xl shadow-2xl border border-gray-800 flex flex-col"
           >
-            {/* Header */}
             <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-800">
                 <FaRobot size={20} className="text-orange-500"/>
                 <h3 className="font-bold text-lg">Event Assistant</h3>
             </div>
             
-            {/* Messages */}
             <div className="flex-1 overflow-y-auto mb-3 pr-2 custom-scrollbar">
               {messages.map((msg, index) => (
                 <div
@@ -99,7 +94,6 @@ const ChatBot = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
             <div className="flex items-center gap-2">
               <input
                 type="text"
@@ -118,9 +112,21 @@ const ChatBot = () => {
       </AnimatePresence>
       <button
         onClick={handleToggle}
-        className="bg-orange-600 p-4 rounded-full shadow-lg text-white mt-4 hover:bg-orange-700 transition-transform hover:scale-110"
+        // --- Added fixed size for smooth animation ---
+        className="bg-orange-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg text-white mt-4 hover:bg-orange-700 transition-transform hover:scale-110"
       >
-        <FaRobot size={24} />
+        {/* --- Conditionally render Robot or Close icon with animation --- */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={isOpen ? "close" : "robot"}
+            initial={{ opacity: 0, scale: 0.7, rotate: -45 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.7, rotate: 45 }}
+            transition={{ duration: 0.2 }}
+          >
+            {isOpen ? <IoMdClose size={28} /> : <FaRobot size={24} />}
+          </motion.div>
+        </AnimatePresence>
       </button>
     </div>
   );

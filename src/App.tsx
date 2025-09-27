@@ -9,7 +9,7 @@ import LoginModal from './components/LoginModal';
 import SignupModal from './components/SignupModal';
 import RegisterModal from './components/RegisterModal';
 import AdminDashboard from './components/AdminDashboard';
-
+import ChatBot from './components/ChatBot';
 interface Event {
   id: number;
   name: string;
@@ -131,7 +131,7 @@ function App() {
         onLogout={handleLogout}
         onAdminDashboard={() => setIsAdminDashboardOpen(true)}
       />
-      
+      < ChatBot/>
       <HeroSection />
       
       <EventList
